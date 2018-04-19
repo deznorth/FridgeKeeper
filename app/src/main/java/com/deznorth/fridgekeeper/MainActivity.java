@@ -11,15 +11,17 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 
-import android.widget.TextView;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+
+    //Creates the list of items
+    public static List<FridgeItem> items = new ArrayList<FridgeItem>();
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -64,6 +66,12 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        //TODO: CUSTOMIZE GENERATION OF ITEMS
+
+        for(int i = 1; i<= 25; i++) {
+            items.add(new FridgeItem(String.valueOf(i), "Item " + i));
+        }
 
     }
 
@@ -112,7 +120,7 @@ public class MainActivity extends AppCompatActivity {
                     ProfileActivity profile = new ProfileActivity();
                     return profile;
                 case 1:
-                    FridgeActivity fridge = new FridgeActivity();
+                    FridgeFragment fridge = new FridgeFragment();
                     return fridge;
 
                     default:
