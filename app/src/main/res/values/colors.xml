@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+
+    <!-- Theme Colors -->
+    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimaryDark">#003c8f</color>
+    <color name="colorPrimaryLight">#5e92f3</color>
+    <color name="colorAccent">#1de9b6</color>
+    <color name="colorSecondary">#1de9b6</color>
+    <color name="colorSecondaryDark">#00b686</color>
+    <color name="colorSecondaryLight">#6effe8</color>
+
+    <!-- Other Colors -->
+    <color name="BlueGray">#455a64</color>
+    <color name="BlueGrayDark">#1c313a</color>
+    <color name="BlueGrayLight">#718792</color>
 </resources>

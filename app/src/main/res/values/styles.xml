@@ -17,4 +17,10 @@
 
     <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
+    <style name="FKTheme" parent="AppTheme.NoActionBar" >
+        <item name="colorAccent">@color/colorSecondary</item>
+        <item name="android:colorBackground">@color/BlueGray</item>
+    </style>
+
+
 </resources>
