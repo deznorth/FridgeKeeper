@@ -2,7 +2,7 @@
 <resources>
 
     <!-- Theme Colors -->
-    <color name="colorPrimary">#1565c0</color>
+    <color name="colorPrimary">#001565c0</color>
     <color name="colorPrimaryDark">#003c8f</color>
     <color name="colorPrimaryLight">#5e92f3</color>
     <color name="colorAccent">#1de9b6</color>
@@ -11,7 +11,8 @@
     <color name="colorSecondaryLight">#6effe8</color>
 
     <!-- Other Colors -->
+    <color name="White">#ffffff</color>
     <color name="BlueGray">#455a64</color>
     <color name="BlueGrayDark">#1c313a</color>
-    <color name="BlueGrayLight">#718792</color>
+    <color name="BlueGrayLight">#e4718792</color>
 </resources>

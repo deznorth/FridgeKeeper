@@ -20,6 +20,8 @@
     <style name="FKTheme" parent="AppTheme.NoActionBar" >
         <item name="colorAccent">@color/colorSecondary</item>
         <item name="android:colorBackground">@color/BlueGray</item>
+        <item name="colorPrimaryDark">@color/BlueGrayDark</item>
+        <item name="android:textColor">@color/White</item>
     </style>
 
 
