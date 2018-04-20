@@ -23,9 +23,9 @@
             android:layout_weight="1"
             android:background="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|enterAlways"
-            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:popupTheme="@style/FKTheme"
             app:title="@string/app_name">
-
+            <!-- I changed the popup theme from @style/AppTheme.PopupOverlay-->
         </android.support.v7.widget.Toolbar>
 
         <android.support.design.widget.TabLayout

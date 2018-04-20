@@ -1,5 +1,7 @@
 package com.deznorth.fridgekeeper;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -67,11 +69,9 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        //TODO: CUSTOMIZE GENERATION OF ITEMS
-
-        for(int i = 1; i<= 25; i++) {
-            items.add(new FridgeItem(String.valueOf(i), "Item " + i));
-        }
+        Context context = this;
+        SharedPreferences sharedPrefs = context.getSharedPreferences(
+                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
 
     }
 
@@ -132,6 +132,16 @@ public class MainActivity extends AppCompatActivity {
         public int getCount() {
             // Show 2 total pages.
             return 2;
+        }
+    }
+
+    public void addItem(int type, String name, String date, boolean dateType){
+        int newIndex = items.size() - 1;
+        //TODO: CUSTOMIZE GENERATION OF ITEMS
+
+        for(int i = 1; i<= 25; i++) {
+            items.add(new FridgeItem(String.valueOf(i), "Item " + i));
+
         }
     }
 }

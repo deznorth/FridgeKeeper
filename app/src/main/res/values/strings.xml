@@ -5,4 +5,11 @@
     <string name="action_settings">Settings</string>
     <string name="section_format">Hello World from section: %1$d</string>
     <string name="foodimg_contentdesc">Food Src Image</string>
+    <string name="item_thrash_desc">Press this to send item to thrash</string>
+    <string name="Profile_Default_Name">Enter Name</string>
+
+    <!--SharedPreferences Keys-->
+    <string name="Shared_Prefs_Key">com.deznorth.fridgekeeper.SHARED_PREFS</string>
+    <string name="profile_name_Key">shared_prefs_profile_name</string>
+    <string name="profile_default_name">DEFAULT USER</string>
 </resources>

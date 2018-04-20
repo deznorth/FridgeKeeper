@@ -6,7 +6,7 @@
     <dimen name="appbar_padding_top">8dp</dimen>
     <dimen name="text_margin">16dp</dimen>
     <dimen name="fridge_item_margin">8dp</dimen>
-    <dimen name="fridge_item_height">80dp</dimen>
+    <dimen name="fridge_item_height">120dp</dimen>
     <dimen name="fridge_item_padding">5dp</dimen>
     <dimen name="fridge_item_elevation">5dp</dimen>
 </resources>
