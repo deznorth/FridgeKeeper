@@ -1,18 +1,20 @@
 package com.deznorth.fridgekeeper;
 
 public class FridgeItem {
-    public final String id;
-    public final String content;
-    //public final String details;
+    public final int id;
+    public final String name;
+    public final String date;
+    public final String adder;
 
-    public FridgeItem(String id, String content) {
+    public FridgeItem(int id, String name, String date, String adder) {
         this.id = id;
-        this.content = content;
-        //this.details = details;
+        this.name = name;
+        this.date = date;
+        this.adder = adder;
     }
 
     @Override
     public String toString() {
-        return content;
+        return name;
     }
 }

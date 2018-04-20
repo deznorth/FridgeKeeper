@@ -137,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void addItem(int type, String name, String date, boolean dateType){
         int newIndex = items.size() - 1;
+        String adder = shared
+
+        items.add(new FridgeItem(newIndex,name,date,adder));
         //TODO: CUSTOMIZE GENERATION OF ITEMS
 
         for(int i = 1; i<= 25; i++) {

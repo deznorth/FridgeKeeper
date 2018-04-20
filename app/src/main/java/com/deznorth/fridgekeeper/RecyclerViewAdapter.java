@@ -6,12 +6,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import com.deznorth.fridgekeeper.dummy.DummyContent.DummyItem;
-
 import java.util.List;
 
 /**
- * {@link RecyclerView.Adapter} that can display a {@link DummyItem} and makes a call to the
+ * {@link RecyclerView.Adapter} that can display a and makes a call to the
  * TODO: Replace the implementation with code for your data type.
  */
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
@@ -32,8 +30,9 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mIdView.setText(mValues.get(position).id);
-        holder.mContentView.setText(mValues.get(position).content);
+        holder.mNameView.setText(mValues.get(position).name);
+        holder.mDateView.setText(mValues.get(position).date);
+        holder.mAdderView.setText(mValues.get(position).adder);
     }
 
     @Override
@@ -43,20 +42,22 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     public class ViewHolder extends RecyclerView.ViewHolder {
         public final View mView;
-        public final TextView mIdView;
-        public final TextView mContentView;
+        public final TextView mNameView;
+        public final TextView mDateView;
+        public final TextView mAdderView;
         public FridgeItem mItem;
 
         public ViewHolder(View view) {
             super(view);
             mView = view;
-            mIdView = (TextView) view.findViewById(R.id.item_name);
-            mContentView = (TextView) view.findViewById(R.id.item_date);
+            mNameView = view.findViewById(R.id.item_name);
+            mDateView = view.findViewById(R.id.item_date);
+            mAdderView = view.findViewById(R.id.Item_AddedBy);
         }
 
         @Override
         public String toString() {
-            return super.toString() + " '" + mContentView.getText() + "'";
+            return super.toString() + " '" + mDateView.getText() + "'";
         }
     }
 }

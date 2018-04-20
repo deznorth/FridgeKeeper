@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 
 public class ProfileActivity extends Fragment {
@@ -52,6 +53,7 @@ public class ProfileActivity extends Fragment {
     public void changeName(String name){
         prefsEditor.putString(getString(R.string.profile_name_Key),name);
         prefsEditor.apply();
+        Toast.makeText(getActivity(), "Name Changed!", Toast.LENGTH_SHORT).show();
     }
 
 }
