@@ -5,7 +5,10 @@
     android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:clickable="true"
+    android:focusable="true"
+    android:focusableInTouchMode="true" >
 
     <ImageView
         android:id="@+id/ProfileImg"
@@ -26,14 +29,15 @@
         android:layout_marginTop="24dp"
         android:hint="@string/Profile_Default_Name"
         android:inputType="text"
+        android:selectAllOnFocus="true"
         android:singleLine="true"
+        android:textColor="@color/White"
+        android:textColorHint="@color/White"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_constraintLeft_creator="1"
-        tools:layout_constraintTop_creator="1"
-        android:textColorHint="@color/White"
-        android:textColor="@color/White"/>
+        tools:layout_constraintTop_creator="1" />
 
 </android.support.constraint.ConstraintLayout>

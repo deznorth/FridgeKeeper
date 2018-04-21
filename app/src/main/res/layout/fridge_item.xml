@@ -19,7 +19,7 @@
             android:layout_height="match_parent">
 
             <ImageView
-                android:id="@+id/imageView"
+                android:id="@+id/item_img"
                 android:layout_width="48dp"
                 android:layout_height="0dp"
                 android:layout_marginBottom="2dp"
@@ -43,7 +43,7 @@
                 android:textAppearance="?attr/textAppearanceListItem"
                 app:layout_constraintBottom_toTopOf="@id/item_date"
                 app:layout_constraintEnd_toStartOf="@id/item_thrash"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/item_img"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <TextView
@@ -55,7 +55,7 @@
                 android:layout_marginStart="8dp"
                 android:textAppearance="?attr/textAppearanceListItem"
                 app:layout_constraintEnd_toStartOf="@id/item_thrash"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/item_img"
                 app:layout_constraintTop_toBottomOf="@+id/item_name" />
 
             <TextView
@@ -66,7 +66,7 @@
                 android:layout_marginStart="16dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@id/item_thrash"
-                app:layout_constraintStart_toEndOf="@+id/imageView"
+                app:layout_constraintStart_toEndOf="@+id/item_img"
                 app:layout_constraintTop_toBottomOf="@+id/item_date" />
 
             <ImageView

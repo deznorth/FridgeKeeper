@@ -13,6 +13,6 @@
     <!-- Other Colors -->
     <color name="White">#ffffff</color>
     <color name="BlueGray">#455a64</color>
-    <color name="BlueGrayDark">#1c313a</color>
+    <color name="BlueGrayDark">#951c313a</color>
     <color name="BlueGrayLight">#e4718792</color>
 </resources>

@@ -1,6 +1,7 @@
 package com.deznorth.fridgekeeper;
 
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.support.design.widget.TabLayout;
 import android.support.design.widget.FloatingActionButton;
@@ -16,14 +17,18 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.deznorth.fridgekeeper.FridgeFragment;
 
 public class MainActivity extends AppCompatActivity {
 
     //Creates the list of items
     public static List<FridgeItem> items = new ArrayList<FridgeItem>();
+
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -60,19 +65,14 @@ public class MainActivity extends AppCompatActivity {
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
         tabLayout.addOnTabSelectedListener(new TabLayout.ViewPagerOnTabSelectedListener(mViewPager));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+        FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, AddItem.class);
+                startActivity(intent);
             }
         });
-
-        Context context = this;
-        SharedPreferences sharedPrefs = context.getSharedPreferences(
-                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
-
     }
 
 
@@ -135,16 +135,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void addItem(int type, String name, String date, boolean dateType){
-        int newIndex = items.size() - 1;
-        String adder = shared
 
-        items.add(new FridgeItem(newIndex,name,date,adder));
-        //TODO: CUSTOMIZE GENERATION OF ITEMS
-
-        for(int i = 1; i<= 25; i++) {
-            items.add(new FridgeItem(String.valueOf(i), "Item " + i));
-
-        }
-    }
 }

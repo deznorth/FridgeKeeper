@@ -6,7 +6,8 @@
     android:name="com.deznorth.fridgekeeper.ItemFragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginLeft="16dp"
-    android:layout_marginRight="16dp"
     tools:context=".FridgeFragment"
-    tools:listitem="@layout/fridge_item" />
+    tools:listitem="@layout/fridge_item">
+
+
+</android.support.v7.widget.RecyclerView>

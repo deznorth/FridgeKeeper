@@ -18,27 +18,24 @@ public class ProfileActivity extends Fragment {
     private TextView profileName;
     private ImageView profileImgView;
 
-    Context context = getActivity();
-    SharedPreferences sharedPrefs = context.getSharedPreferences(
-            getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
-
-    SharedPreferences.Editor prefsEditor = sharedPrefs.edit();
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_profile, container, false);
-        return rootView;
-    }
+        profileName = rootView.findViewById(R.id.profile_name);
+        profileImgView = rootView.findViewById(R.id.ProfileImg);
 
-    @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        profileName = profileName.findViewById(R.id.profile_name);
-        profileImgView = profileImgView.findViewById(R.id.ProfileImg);
+        Context context = rootView.getContext();
+        SharedPreferences sharedPrefs = context.getSharedPreferences(
+                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor prefsEditor = sharedPrefs.edit();
 
         profileName.setText(sharedPrefs.getString(getString(R.string.profile_name_Key)
                 ,getString(R.string.profile_default_name)));
+
+        prefsEditor.apply();
 
         profileName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             @Override
@@ -48,9 +45,22 @@ public class ProfileActivity extends Fragment {
                 }
             }
         });
+        return rootView;
+    }
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
     }
 
     public void changeName(String name){
+        Context context = getActivity();
+        SharedPreferences sharedPrefs = context.getSharedPreferences(
+                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
+
+        SharedPreferences.Editor prefsEditor = sharedPrefs.edit();
+
         prefsEditor.putString(getString(R.string.profile_name_Key),name);
         prefsEditor.apply();
         Toast.makeText(getActivity(), "Name Changed!", Toast.LENGTH_SHORT).show();

@@ -22,6 +22,9 @@
         <item name="android:colorBackground">@color/BlueGray</item>
         <item name="colorPrimaryDark">@color/BlueGrayDark</item>
         <item name="android:textColor">@color/White</item>
+        <item name="android:colorForeground">@color/White</item>
+        <item name="android:textColorPrimaryInverse">@android:color/primary_text_light</item>
+        <item name="android:textColorSecondary">?android:attr/colorForeground</item>
     </style>
 
 
