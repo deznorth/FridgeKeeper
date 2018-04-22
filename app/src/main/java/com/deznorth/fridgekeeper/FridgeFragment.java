@@ -99,6 +99,7 @@ public class FridgeFragment extends Fragment {
         mAdapter.notifyItemRangeChanged(newIndex,size);
     }
 
+    /** I LEFT HERE!!!! **/
     public void thrashItem(int index){
         if(MainActivity.items.size()>0) {
             if (index < 0) {
