@@ -1,7 +1,9 @@
 package com.deznorth.fridgekeeper;
 
 import android.app.DatePickerDialog;
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.support.v7.app.AppCompatActivity;
@@ -152,9 +154,17 @@ public class AddItem extends AppCompatActivity {
         });
     }
 
+    private String getAdder(){
+        SharedPreferences sharedPrefs = getSharedPreferences(
+                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
+
+        return sharedPrefs.getString(getString(R.string.profile_name_Key)
+                ,getString(R.string.profile_default_name));
+    }
+
     private void createItem(){
         FridgeFragment ff = new FridgeFragment();
-        ff.addItem(mItemType,mItemName,mItemDate,mItemDateType);
+        ff.addItem(mItemType,mItemName,mItemDate,getAdder(),mItemDateType);
         Intent intent = new Intent(this,MainActivity.class);
         startActivity(intent);
         Toast.makeText(AddItem.this,mItemType+" "+

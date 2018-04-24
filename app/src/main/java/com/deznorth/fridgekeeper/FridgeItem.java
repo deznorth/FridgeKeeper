@@ -8,7 +8,7 @@ public class FridgeItem {
     public final int ftype;
     public final int dateType;
 
-    public FridgeItem(int id, String name, String date, String adder, int type, int dateType) {
+    public FridgeItem(int id, String name, String date, String adder,int type, int dateType) {
         this.id = id;
         this.name = name;
         switch (dateType){

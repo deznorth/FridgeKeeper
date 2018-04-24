@@ -1,5 +1,7 @@
 package com.deznorth.fridgekeeper;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -18,6 +20,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     private final List<FridgeItem> mValues;
 
+
     public RecyclerViewAdapter(List<FridgeItem> items) {
         mValues = items;
     }
@@ -26,8 +29,13 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         View view = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.fridge_item, parent, false);
+
+
+
         return new ViewHolder(view);
     }
+
+
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
@@ -50,14 +58,14 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         holder.mNameView.setText(mValues.get(position).name);
         holder.mDateView.setText(mValues.get(position).date);
-        holder.mAdderView.setText(mValues.get(position).adder);
+        holder.mAdderView.setText(mValues.get(position).adder); //mValues.get(position).adder
 
         holder.mThrashIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FridgeFragment ff = new FridgeFragment();
                 ff.thrashItem(holder.mItem.id);
-
+                notifyDataSetChanged();
             }
         });
 

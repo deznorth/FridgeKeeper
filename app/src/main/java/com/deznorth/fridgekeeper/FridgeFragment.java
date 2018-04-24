@@ -30,8 +30,8 @@ public class FridgeFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
 
-    private String mAdder;
-    private RecyclerView rv;
+//    public String mAdder;
+
 
     RecyclerViewAdapter mAdapter = new RecyclerViewAdapter(MainActivity.items);
 
@@ -69,59 +69,67 @@ public class FridgeFragment extends Fragment {
 
         // Set the adapter
             Context context = view.getContext();
+            //mContext = context;
             RecyclerView recyclerView = (RecyclerView) view;
             recyclerView.setLayoutManager(new LinearLayoutManager(context));
             recyclerView.setAdapter(mAdapter);
 
-            rv = recyclerView;
-
-        SharedPreferences sharedPrefs = context.getSharedPreferences(
-                getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
-
-        mAdder = sharedPrefs.getString(getString(R.string.profile_name_Key)
-                ,getString(R.string.profile_default_name));
-
         return view;
     }
 
-    public void addItem(int type, String name, String date, int dateType){
+    public void addItem(int type, String name, String date, String adder, int dateType){
         //I might need to change this later on
         int size = MainActivity.items.size();
-        int newIndex;
-        if(size>0){
-            newIndex =  size-1;
-        }else{
-            newIndex =  size;
-        }
 
-        MainActivity.items.add(newIndex,new FridgeItem(newIndex,name,date,mAdder,type,dateType));
-        mAdapter.notifyItemInserted(newIndex);
-        mAdapter.notifyItemRangeChanged(newIndex,size);
+        MainActivity.items.add(size,new FridgeItem(size,name,date, adder,type,dateType));
+        mAdapter.notifyItemRangeChanged(size,size);
+        mAdapter.notifyItemInserted(size);
     }
 
-    /** I LEFT HERE!!!! **/
+    /** I LEFT HERE!!!!
+     * HUGE PROBLEM. Removing wont work with my current ID system. I need to get an ID
+     * from the actual item handler because my ID won't change after the others are
+     * removed, meaning that I can't delete more than one or it will crash because
+     * the ID of the other one is out of range. find a way to identify items in the list
+     * that automatically refreshes when the range changes.
+     * **/
     public void thrashItem(int index){
         if(MainActivity.items.size()>0) {
-            if (index < 0) {
-                Log.d("meh", "thrashItem: index out of bounds");
-            } else {
-                MainActivity.items.remove(index);
-                rv.removeViewAt(index);
-                mAdapter.notifyItemRemoved(index);
-                mAdapter.notifyItemRangeChanged(index, MainActivity.items.size());
-                //mAdapter.notifyDataSetChanged();
-            }
+            MainActivity.items.remove(index);
+            mAdapter.notifyItemRemoved(index);
+            mAdapter.notifyItemRangeChanged(index, MainActivity.items.size());
+            //mAdapter.notifyDataSetChanged();
         }
 
     }
 
-    public void thrashItem(int[] indexes){
-        for(int i = 0; i<indexes.length; i++){
-            MainActivity.items.remove(indexes[i]);
-            mAdapter.notifyItemRemoved(indexes[i]);
-            mAdapter.notifyItemRangeChanged(indexes[i],MainActivity.items.size());
-        }
-
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
     }
+
+//    public String getAdder(){
+//
+//        Context c = getActivity();
+//        String Adder = "";
+//        if(c!=null){
+//            SharedPreferences sharedPrefs = c.getSharedPreferences(
+//                    getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
+//
+//            Adder = sharedPrefs.getString(getString(R.string.profile_name_Key)
+//                    ,getString(R.string.profile_default_name));
+//        }
+//
+//        return Adder;
+//    }
+
+//    public void thrashItem(int[] indexes){
+//        for(int i = 0; i<indexes.length; i++){
+//            MainActivity.items.remove(indexes[i]);
+//            mAdapter.notifyItemRemoved(indexes[i]);
+//            mAdapter.notifyItemRangeChanged(indexes[i],MainActivity.items.size());
+//        }
+//
+//    }
 
 }
