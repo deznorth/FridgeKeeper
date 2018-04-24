@@ -38,7 +38,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, int position) {
+    public void onBindViewHolder(final ViewHolder holder, final int position) {
         holder.mItem = mValues.get(position);
 
         switch (mValues.get(position).ftype){
@@ -64,14 +64,10 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
             @Override
             public void onClick(View v) {
                 FridgeFragment ff = new FridgeFragment();
-                ff.thrashItem(holder.mItem.id);
+                ff.thrashItem(holder.getAdapterPosition());
                 notifyDataSetChanged();
             }
         });
-
-
-
-        //TODO: ADD ON CLICK LISTENER HERE FOR THRASH
     }
 
     @Override

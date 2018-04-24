@@ -86,13 +86,7 @@ public class FridgeFragment extends Fragment {
         mAdapter.notifyItemInserted(size);
     }
 
-    /** I LEFT HERE!!!!
-     * HUGE PROBLEM. Removing wont work with my current ID system. I need to get an ID
-     * from the actual item handler because my ID won't change after the others are
-     * removed, meaning that I can't delete more than one or it will crash because
-     * the ID of the other one is out of range. find a way to identify items in the list
-     * that automatically refreshes when the range changes.
-     * **/
+
     public void thrashItem(int index){
         if(MainActivity.items.size()>0) {
             MainActivity.items.remove(index);
@@ -102,34 +96,5 @@ public class FridgeFragment extends Fragment {
         }
 
     }
-
-    @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
-    }
-
-//    public String getAdder(){
-//
-//        Context c = getActivity();
-//        String Adder = "";
-//        if(c!=null){
-//            SharedPreferences sharedPrefs = c.getSharedPreferences(
-//                    getString(R.string.Shared_Prefs_Key), Context.MODE_PRIVATE);
-//
-//            Adder = sharedPrefs.getString(getString(R.string.profile_name_Key)
-//                    ,getString(R.string.profile_default_name));
-//        }
-//
-//        return Adder;
-//    }
-
-//    public void thrashItem(int[] indexes){
-//        for(int i = 0; i<indexes.length; i++){
-//            MainActivity.items.remove(indexes[i]);
-//            mAdapter.notifyItemRemoved(indexes[i]);
-//            mAdapter.notifyItemRangeChanged(indexes[i],MainActivity.items.size());
-//        }
-//
-//    }
 
 }
