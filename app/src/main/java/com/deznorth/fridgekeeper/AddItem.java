@@ -166,8 +166,9 @@ public class AddItem extends AppCompatActivity {
         FridgeFragment ff = new FridgeFragment();
         ff.addItem(mItemType,mItemName,mItemDate,getAdder(),mItemDateType);
         Intent intent = new Intent(this,MainActivity.class);
+        intent.putExtra("changeToFridge", "changeToFridge");
         startActivity(intent);
-        Toast.makeText(AddItem.this,mItemType+" "+
-                mItemName+" "+mItemDate+" "+mItemDateType,Toast.LENGTH_LONG).show();
+//        Toast.makeText(AddItem.this,mItemType+" "+
+//                mItemName+" "+mItemDate+" "+mItemDateType,Toast.LENGTH_LONG).show();
     }
 }

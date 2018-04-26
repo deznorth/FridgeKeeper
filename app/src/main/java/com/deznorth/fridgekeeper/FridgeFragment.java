@@ -1,5 +1,6 @@
 package com.deznorth.fridgekeeper;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -80,8 +81,19 @@ public class FridgeFragment extends Fragment {
     public void addItem(int type, String name, String date, String adder, int dateType){
         //I might need to change this later on
         int size = MainActivity.items.size();
+        final FridgeItem fi = new FridgeItem(name,date,adder,type,dateType);
 
-        MainActivity.items.add(size,new FridgeItem(size,name,date, adder,type,dateType));
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                MainActivity.appDatabase.itemsDao().addItem(fi);
+            }
+        };
+
+        Thread fridgeOpThread  = new Thread(r);
+        fridgeOpThread.start();
+
+//        MainActivity.items.add(size,new FridgeItem(name,date, adder,type,dateType));
         mAdapter.notifyItemRangeChanged(size,size);
         mAdapter.notifyItemInserted(size);
     }

@@ -1,5 +1,6 @@
 package com.deznorth.fridgekeeper;
 
+import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -27,7 +28,8 @@ import com.deznorth.fridgekeeper.FridgeFragment;
 public class MainActivity extends AppCompatActivity {
 
     //Creates the list of items
-    public static List<FridgeItem> items = new ArrayList<FridgeItem>();
+    public static List<FridgeItem> items;
+    public static AppDatabase appDatabase;
 
 
     /**
@@ -60,6 +62,7 @@ public class MainActivity extends AppCompatActivity {
         mViewPager = (ViewPager) findViewById(R.id.container);
         mViewPager.setAdapter(mSectionsPagerAdapter);
 
+
         TabLayout tabLayout = (TabLayout) findViewById(R.id.tabs);
 
         mViewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
@@ -73,8 +76,25 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
 
+        appDatabase = Room.databaseBuilder(getApplicationContext(),AppDatabase.class, "fridgedb").build();
+
+        Runnable r = new Runnable() {
+            @Override
+            public void run() {
+                items = appDatabase.itemsDao().getAllItems();
+            }
+        };
+        Thread getItemsThread = new Thread(r);
+        getItemsThread.start();
+
+        Bundle extraFromAddItem = getIntent().getExtras();
+        if(extraFromAddItem==null){
+            return;
+        } else if(extraFromAddItem.getString("changeToFridge")!=null){
+            mViewPager.setCurrentItem(1,true);
+        }
+    }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -97,11 +117,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
-
-    /**
-     * A placeholder fragment containing a simple view.
-     */
-    //DELETED PLACEHOLDER FRAGMENT
 
     /**
      * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
