@@ -99,11 +99,22 @@ public class FridgeFragment extends Fragment {
     }
 
 
-    public void thrashItem(int index){
+    public void thrashItem(int position, final FridgeItem id){
         if(MainActivity.items.size()>0) {
-            MainActivity.items.remove(index);
-            mAdapter.notifyItemRemoved(index);
-            mAdapter.notifyItemRangeChanged(index, MainActivity.items.size());
+
+            Runnable r = new Runnable() {
+                @Override
+                public void run() {
+                    MainActivity.appDatabase.itemsDao().removeItem(id);
+                }
+            };
+
+            Thread fridgeRemoveThread  = new Thread(r);
+            fridgeRemoveThread.start();
+
+            MainActivity.items.remove(position);
+            mAdapter.notifyItemRemoved(position);
+            mAdapter.notifyItemRangeChanged(position, MainActivity.items.size());
             //mAdapter.notifyDataSetChanged();
         }
 

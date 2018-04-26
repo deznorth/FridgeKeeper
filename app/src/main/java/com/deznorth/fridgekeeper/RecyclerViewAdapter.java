@@ -57,14 +57,26 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
 
         holder.mNameView.setText(mValues.get(position).name);
-        holder.mDateView.setText(mValues.get(position).date);
+
+        switch (mValues.get(position).getDateType()){
+            case 1:
+                holder.mDateView.setText("Expires: "+mValues.get(position).date);
+                break;
+            case 2:
+                holder.mDateView.setText("Added: "+mValues.get(position).date);
+                break;
+                default:
+                    holder.mDateView.setText("null");
+                    break;
+        }
+
         holder.mAdderView.setText(mValues.get(position).adder); //mValues.get(position).adder
 
         holder.mThrashIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 FridgeFragment ff = new FridgeFragment();
-                ff.thrashItem(holder.getAdapterPosition());
+                ff.thrashItem(holder.getAdapterPosition(), holder.mItem);
                 notifyDataSetChanged();
             }
         });

@@ -24,10 +24,10 @@ public class FridgeItem {
         this.name = name;
         switch (dateType){
             case 1:
-                this.date = "Expires: "+date;
+                this.date = date;
                 break;
             case 2:
-                this.date = "Added: "+date;
+                this.date = date;
                 break;
                 default:
                     this.date = null;

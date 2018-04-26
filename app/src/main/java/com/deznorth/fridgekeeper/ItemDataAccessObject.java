@@ -1,6 +1,7 @@
 package com.deznorth.fridgekeeper;
 
 import android.arch.persistence.room.Dao;
+import android.arch.persistence.room.Delete;
 import android.arch.persistence.room.Insert;
 import android.arch.persistence.room.Query;
 
@@ -14,4 +15,7 @@ public interface ItemDataAccessObject {
 
     @Insert
     void addItem(FridgeItem item);
+
+    @Delete
+    public void removeItem(FridgeItem item);
 }
